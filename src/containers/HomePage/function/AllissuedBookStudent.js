@@ -38,12 +38,8 @@ class AllIssuedBook extends Component {
         <table className="table table-bordered table-responsive-sm">
           <thead className="thead-dark">
             <tr>
-              <th>MSSV</th>
-              <th>Student Name</th>
               <th>Book Name</th>
               <th>Author</th>
-
-              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -51,22 +47,8 @@ class AllIssuedBook extends Component {
               IssuedBook.map((book) => {
                 return (
                   <tr key={book._id}>
-                    <td>{book.mssv}</td>
-                    <td>{book.studentName}</td>
                     <td>{book.bookName}</td>
                     <td>{book.author}</td>
-
-                    <td>
-                      {"  "}
-                      <button
-                        // onClick={() =>
-                        //   dispatch(issuedReqDeletedByAdmin(book._id))
-                        // }
-                        className="btn btn-danger"
-                      >
-                        Delete
-                      </button>
-                    </td>
                   </tr>
                 );
               })}

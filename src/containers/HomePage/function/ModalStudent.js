@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { studentLogin } from "../../../services/userService";
 class ModalUser extends Component {
   constructor(props) {
     super(props);
@@ -24,7 +25,12 @@ class ModalUser extends Component {
       ...copyState,
     });
   };
-  checkValidInput = () => {
+  checkValidInput = async () => {
+    let res = await studentLogin(this.state.userName);
+    if (res.data.length >= 1) {
+      alert("account exists");
+      return false;
+    }
     let isValid = true;
     let arrInput = [
       "email",
@@ -66,6 +72,7 @@ class ModalUser extends Component {
         mssv: "",
         rePassword: "",
       });
+      this.toggle();
     }
   };
   render() {
