@@ -2,34 +2,53 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { Switch, Route } from "react-router-dom";
-// import "./Dashboard.scss";
-// import adminService from "../services/adminService";
-import Header from "../Header/Header";
+
 import Sidebar from "../../components/Sidebar";
 import AddBook from "./function/AddBook";
 import AllBook from "./function/AllBook";
 import AllStudent from "./function/AllStudent";
-
+import { Link } from "react-router-dom";
+import logoHome from "../../assets/test1.jpg";
+import HomePage from "./function/HomePage";
 import "./Dashboard.scss";
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isOpenSideBar: false,
+    };
   }
-
+  openSide = () => {
+    this.setState({
+      isOpenSideBar: !this.state.isOpenSideBar,
+    });
+  };
   render() {
     return (
       <div>
-        <Header />
+        <div className="home-header-container">
+          <div className="home-header-content">
+            <div className="left-content">
+              <i className="fas fa-bars" onClick={() => this.openSide()}></i>
+              <div className="Header-logo">
+                <Link to="/dashboard">
+                  <img src={logoHome}></img>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div className="container-dashboard">
-          <div className="SideBar">
-            <Sidebar />
-          </div>
+          {this.state.isOpenSideBar && (
+            <div className="SideBar">
+              <Sidebar />
+            </div>
+          )}
 
-          <div style={{ height: "940px", marginLeft: "10px", width: "80%" }}>
+          <div className="routers">
             <Switch>
-              <Route path="/dashboard/" component={AddBook} exact />
+              <Route path="/dashboard/" component={HomePage} exact />
               <Route path="/dashboard/addBook" component={AddBook} exact />
               <Route path="/dashboard/allBook" component={AllBook} exact />
               <Route
