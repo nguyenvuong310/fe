@@ -25,7 +25,7 @@ class allBook extends Component {
     const { books } = this.state;
     return (
       <div>
-        <div className="col-md-10 m-auto">
+        <div className="col-md-8 m-auto">
           <h3
             className="text-center bg-info p-2"
             style={{ fontFamily: "sans-serif" }}

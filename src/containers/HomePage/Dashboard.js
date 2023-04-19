@@ -18,35 +18,42 @@ class Dashboard extends Component {
       isOpenSideBar: false,
     };
   }
-  openSide = () => {
-    this.setState({
-      isOpenSideBar: !this.state.isOpenSideBar,
-    });
-  };
+  // openSide = () => {
+  //   this.setState({
+  //     isOpenSideBar: !this.state.isOpenSideBar,
+  //   });
+  // };
   render() {
     return (
       <div>
-        <div className="home-header-container">
-          <div className="home-header-content">
-            <div className="left-content">
-              <i className="fas fa-bars" onClick={() => this.openSide()}></i>
-              <div className="Header-logo">
-                <Link to="/dashboard">
-                  <img src={logoHome}></img>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div className="container-dashboard">
-          {this.state.isOpenSideBar && (
+          <div>
             <div className="SideBar">
               <Sidebar />
             </div>
-          )}
+          </div>
 
           <div className="routers">
+            <div className="home-header-container">
+              <div className="home-header-content">
+                <div className="left-content">
+                  <span>LIBARY MANAGEMENT</span>
+                </div>
+                <div className="center-content"></div>
+                <div className="right-content">
+                  <div className="search">
+                    <input type="text" placeholder="Search" />
+                    <i className="fas fa-search"></i>
+                  </div>
+                  <div className="bell">
+                    <i className="far fa-bell"></i>
+                  </div>
+                  <div className="setting">
+                    <i className="fas fa-cog"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
             <Switch>
               <Route path="/dashboard/" component={HomePage} exact />
               <Route path="/dashboard/addBook" component={AddBook} exact />
