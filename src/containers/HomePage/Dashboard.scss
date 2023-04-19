@@ -37,6 +37,7 @@
           display: flex;
           align-items: center;
           padding-left: 23px;
+          cursor: pointer;
           span {
             text-transform: capitalize;
             font-size: 20px;
@@ -86,6 +87,7 @@
           .setting {
             margin-right: 29px;
             font-size: 20px;
+            cursor: pointer;
           }
         }
       }
